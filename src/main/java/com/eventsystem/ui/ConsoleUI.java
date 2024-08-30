@@ -22,6 +22,13 @@ public class ConsoleUI {
                 case 1:
                     switchRole();
                     break;
+                case 2:
+                    if (isAdmin) {
+                        menu.adminMenu();
+                    } else {
+                        menu.userMenu();
+                    }
+                    break;
                 default:
                     System.out.println("Invalid choice.");
             }
