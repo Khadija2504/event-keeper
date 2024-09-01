@@ -22,10 +22,12 @@ public class Menu {
     public void userMenu() {
         while (true) {
             System.out.println("\nUser Menu:");
-            System.out.println("1. Register for an event");
-            System.out.println("2. View my registered events");
-            System.out.println("3. View all events");
-            System.out.println("4. Back to the first menu");
+            System.out.println("1. Register for an event"); // done
+            System.out.println("2. View my registrations");
+            System.out.println("3. View all events"); // done
+            System.out.println("4. update my details");
+            System.out.println("5. unregister from event"); // done
+            System.out.println("6. Back to the first menu"); // done
 
             int choice = scanner.nextInt();
 
@@ -36,11 +38,12 @@ public class Menu {
                     registerForEvent();
                     break;
                 case 2:
+                    viewMyRegistrations();
                     break;
                 case 3:
                     viewAllEvents();
                     break;
-                case 4:
+                case 6:
                     return;
                 default:
                     System.out.println("Invalid choice");
@@ -52,11 +55,12 @@ public class Menu {
     public void manageParticipants() {
         while (true) {
             System.out.println("\nParticipant Management Menu:");
-            System.out.println("1. Add participant");
-            System.out.println("2. Update participant");
-            System.out.println("3. Delete participant");
-            System.out.println("4. View all participants");
-            System.out.println("5. Back to the user menu");
+            System.out.println("1. Add participant"); // done
+            System.out.println("2. Update participant"); // done
+            System.out.println("3. Delete participant"); //done
+            System.out.println("4. View all participants"); // done
+            System.out.println("5. unregister from event");
+            System.out.println("6. Back to the user menu"); // done
 
             int choice = scanner.nextInt();
 
@@ -75,6 +79,8 @@ public class Menu {
                     viewAllParticipants();
                     break;
                 case 5:
+                    unregisterFromEvent();
+                case 6:
                     return;
                 default:
                     System.out.println("Invalid choice");
@@ -175,6 +181,40 @@ public class Menu {
         Event event = eventService.getAllEvents().get(eventIndex - 1);
         registrationService.registerParticipant(event, participant);
         System.out.println("Registered for event successfully");
+    }
+
+    private void unregisterFromEvent() {
+        viewAllParticipants();
+        System.out.println("Enter event index to unregister from:");
+        int eventIndex = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter your email");
+        String email = scanner.nextLine();
+
+        Participant participant = participantService.findParticipantByEmail(email);
+        if(participant == null) {
+            System.out.println("Participant not found, you must be registred from this event first");
+            return;
+        }
+        Event event = eventService.getAllEvents().get(eventIndex - 1 );
+        registrationService.unregisterParticipant(event, participant);
+
+    }
+
+    private void viewMyRegistrations(){
+        System.out.println("Enter your email:");
+        String email = scanner.nextLine();
+
+        Participant participant = participantService.findParticipantByEmail(email);
+        if (participant == null) {
+            System.out.println("Participant not found.");
+            return;
+        }
+    
+        List<Event> events = registrationService.getEventsForParticipant(participant);
+        for (Event event : events) {
+            System.out.println(event);
+        }
     }
 
     private void updateEvent() {
