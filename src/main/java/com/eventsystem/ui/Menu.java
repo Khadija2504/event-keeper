@@ -99,8 +99,9 @@ public class Menu {
             System.out.println("2. Delete event"); // done
             System.out.println("3. Update event"); //done
             System.out.println("4. Events list"); // done
-            System.out.println("5. Manage participants"); //done
-            System.out.println("6. Back to the first menu");
+            System.out.println("5. View all event inscriptions");
+            System.out.println("6. Manage participants"); //done
+            System.out.println("7. Back to the first menu");
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -119,8 +120,10 @@ public class Menu {
                     viewAllEvents();
                     break;
                 case 5:
-                    manageParticipants();
+                    viewAllEventRegistrations();
                 case 6:
+                    manageParticipants();
+                case 7:
                     return;
                 default:
                     System.out.println("Invalid choice");
@@ -218,6 +221,19 @@ public class Menu {
         List<Event> events = registrationService.getEventsForParticipant(participant);
         for (Event event : events) {
             System.out.println(event);
+        }
+    }
+
+    private void viewAllEventRegistrations() {
+        viewAllEvents();
+        System.out.println("Enter event index:");
+        int eventIndex = scanner.nextInt();
+        scanner.nextLine();
+
+        Event event = eventService.getAllEvents().get(eventIndex - 1);
+        List<Participant> participants = registrationService.getRegistrationsForEvent(event);
+        for (Participant participant : participants) {
+            System.out.println(participant);
         }
     }
 
