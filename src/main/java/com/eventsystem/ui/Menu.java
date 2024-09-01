@@ -23,9 +23,9 @@ public class Menu {
         while (true) {
             System.out.println("\nUser Menu:");
             System.out.println("1. Register for an event"); // done
-            System.out.println("2. View my registrations");
+            System.out.println("2. View my registrations"); //done
             System.out.println("3. View all events"); // done
-            System.out.println("4. update my details");
+            System.out.println("4. update my details"); // done
             System.out.println("5. unregister from event"); // done
             System.out.println("6. Back to the first menu"); // done
 
@@ -43,6 +43,10 @@ public class Menu {
                 case 3:
                     viewAllEvents();
                     break;
+                case 4:
+                    updateParticipant();
+                case 5:
+                    unregisterFromEvent();
                 case 6:
                     return;
                 default:
@@ -59,7 +63,7 @@ public class Menu {
             System.out.println("2. Update participant"); // done
             System.out.println("3. Delete participant"); //done
             System.out.println("4. View all participants"); // done
-            System.out.println("5. unregister from event");
+            System.out.println("5. unregister from event"); // done
             System.out.println("6. Back to the user menu"); // done
 
             int choice = scanner.nextInt();
@@ -91,11 +95,11 @@ public class Menu {
     public void adminMenu() {
         while (true) {
             System.out.println("\nAdministrator Menu:");
-            System.out.println("1. Add event");
-            System.out.println("2. Delete event");
-            System.out.println("3. Update event");
-            System.out.println("4. Events list");
-            System.out.println("5. Manage participants");
+            System.out.println("1. Add event"); // done
+            System.out.println("2. Delete event"); // done
+            System.out.println("3. Update event"); //done
+            System.out.println("4. Events list"); // done
+            System.out.println("5. Manage participants"); //done
             System.out.println("6. Back to the first menu");
 
             int choice = scanner.nextInt();
