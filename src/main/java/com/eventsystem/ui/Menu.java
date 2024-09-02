@@ -9,7 +9,6 @@ import src.main.java.com.eventsystem.util.InputValidator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -28,7 +27,8 @@ public class Menu {
             System.out.println("3. View all events"); // done
             System.out.println("4. update my details"); // done
             System.out.println("5. unregister from event"); // done
-            System.out.println("6. Back to the first menu"); // done
+            System.out.println("6. Search events"); // done
+            System.out.println("7. Back to the first menu"); // done
 
             int choice = scanner.nextInt();
 
@@ -49,6 +49,8 @@ public class Menu {
                 case 5:
                     unregisterFromEvent();
                 case 6:
+                    searchMenu();
+                case 7:
                     return;
                 default:
                     System.out.println("Invalid choice");
@@ -102,7 +104,7 @@ public class Menu {
             System.out.println("4. Events list"); // done
             System.out.println("5. View all event inscriptions");
             System.out.println("6. Manage participants"); //done
-            System.out.println("7. Search events"); // working on
+            System.out.println("7. Search events"); // done
             System.out.println("8. Back to the first menu"); //done
 
             int choice = scanner.nextInt();
