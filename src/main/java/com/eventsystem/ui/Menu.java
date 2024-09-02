@@ -105,7 +105,8 @@ public class Menu {
             System.out.println("5. View all event inscriptions");
             System.out.println("6. Manage participants"); //done
             System.out.println("7. Search events"); // done
-            System.out.println("8. Back to the first menu"); //done
+            System.out.println("8. Generate reports"); // working on
+            System.out.println("9. Back to the first menu"); //done
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -130,9 +131,58 @@ public class Menu {
                 case 7:
                     searchMenu();
                 case 8:
+                    generateReports();
+                case 9:
                     return;
                 default:
                     System.out.println("Invalid choice");
+            }
+        }
+    }
+
+    private void generateReports() {
+        System.out.println("1. generate report for next week");
+        System.out.println("2. generate report for previous week");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch(choice) {
+            case 1:
+                generateNextWeekReport();
+                break;
+            case 2:
+                generatePreviousWeekReport();
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
+    }
+
+    private void generateNextWeekReport() {
+        System.out.println("Report for next week");
+        List<Event> events = EventService.findNextWeekEvents();
+        for (Event event : events) {
+            System.out.println("Event:");
+            System.out.println(event);
+            System.out.println("Inacriptions for this event:");
+            List<Participant> participants = registrationService.getRegistrationsForEvent(event);
+            for (Participant participant : participants) {
+                System.out.println(participant);
+            }
+        }
+    }
+
+    private void generatePreviousWeekReport() {
+        System.out.println("Report for previous week");
+        List<Event> events = EventService.findPreviousWeekEvents();
+        for (Event event : events) {
+            System.out.println("Event:");
+            System.out.println(event);
+            System.out.println("Inacriptions for this event:");
+            List<Participant> participants = registrationService.getRegistrationsForEvent(event);
+            for (Participant participant : participants) {
+                System.out.println(participant);
             }
         }
     }
@@ -173,6 +223,8 @@ public class Menu {
         }
 
     }
+
+
 
     private void findEventsByLocation() {
         System.out.println("Eneter event location");

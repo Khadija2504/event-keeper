@@ -3,6 +3,7 @@ package src.main.java.com.eventsystem.service;
 import src.main.java.com.eventsystem.model.Event;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -53,6 +54,40 @@ public class EventService {
             }
         }
         return eventsByDate;
+    }
+
+    public static List<Event> findNextWeekEvents() {
+        List<Event> nextWeekEvents = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        
+        calendar.add(Calendar.DAY_OF_YEAR, -7);
+        Date startDate = calendar.getTime();
+        
+        for (Event event : events) {
+            Date eventDate = event.getDate();
+            if (eventDate.after(startDate) && eventDate.before(currentDate)) {
+                nextWeekEvents.add(event);
+            }
+        }
+        return nextWeekEvents;
+    }
+
+    public static List<Event> findPreviousWeekEvents() {
+        List<Event> previousWeekEvents = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        
+        calendar.add(Calendar.DAY_OF_YEAR, -7);
+        Date startDate = calendar.getTime();
+        
+        for (Event event : events) {
+            Date eventDate = event.getDate();
+            if (eventDate.after(startDate) && eventDate.before(currentDate)) {
+                previousWeekEvents.add(event);
+            }
+        }
+        return previousWeekEvents;
     }
     
 }
