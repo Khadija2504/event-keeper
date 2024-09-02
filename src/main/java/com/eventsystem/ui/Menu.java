@@ -1,11 +1,11 @@
 package src.main.java.com.eventsystem.ui;
 
 import src.main.java.com.eventsystem.model.Event;
-import src.main.java.com.eventsystem.model.Registration;
 import src.main.java.com.eventsystem.model.Participant;
 import src.main.java.com.eventsystem.service.EventService;
 import src.main.java.com.eventsystem.service.ParticipantService;
 import src.main.java.com.eventsystem.service.RegistrationService;
+import src.main.java.com.eventsystem.util.InputValidator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -138,6 +138,11 @@ public class Menu {
         System.out.println("Eneter your email");
         String email = scanner.nextLine();
 
+        if(!InputValidator.isValidEmail(email) || !InputValidator.isValidName(name)) {
+            System.out.println("Invalid email or name format");
+            return;
+        }
+
         try {
             Participant participant = new Participant(name, email);
             participantService.addParticipant(participant);
@@ -178,6 +183,11 @@ public class Menu {
     
         System.out.println("Enter your email:");
         String email = scanner.nextLine();
+
+        if(!InputValidator.isValidEmail(email)) {
+            System.out.println("Invalid email format");
+            return;
+        }
     
         Participant participant = participantService.findParticipantByEmail(email);
         if (participant == null) {
@@ -198,6 +208,11 @@ public class Menu {
         System.out.println("Enter your email");
         String email = scanner.nextLine();
 
+        if(!InputValidator.isValidEmail(email)) {
+            System.out.println("Invalid email format");
+            return;
+        }
+
         Participant participant = participantService.findParticipantByEmail(email);
         if(participant == null) {
             System.out.println("Participant not found, you must be registred from this event first");
@@ -211,6 +226,11 @@ public class Menu {
     private void viewMyRegistrations(){
         System.out.println("Enter your email:");
         String email = scanner.nextLine();
+
+        if(!InputValidator.isValidEmail(email)) {
+            System.out.println("Invalid email format");
+            return;
+        }
 
         Participant participant = participantService.findParticipantByEmail(email);
         if (participant == null) {
@@ -276,6 +296,11 @@ public class Menu {
 
         System.out.println("Enter new email:");
         String email = scanner.nextLine();
+
+        if(!InputValidator.isValidEmail(email) || !InputValidator.isValidName(name)) {
+            System.out.println("Invalid email or name format");
+            return;
+        }
 
         Participant participant = new Participant(name, email);
         participantService.updateParticipant(index - 1, participant);
