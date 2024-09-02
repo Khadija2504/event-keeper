@@ -9,6 +9,7 @@ import src.main.java.com.eventsystem.util.InputValidator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -101,7 +102,8 @@ public class Menu {
             System.out.println("4. Events list"); // done
             System.out.println("5. View all event inscriptions");
             System.out.println("6. Manage participants"); //done
-            System.out.println("7. Back to the first menu");
+            System.out.println("7. Search events"); // working on
+            System.out.println("8. Back to the first menu"); //done
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -124,10 +126,58 @@ public class Menu {
                 case 6:
                     manageParticipants();
                 case 7:
+                    searchMenu();
+                case 8:
                     return;
                 default:
                     System.out.println("Invalid choice");
             }
+        }
+    }
+
+    private void searchMenu(){
+        System.out.println("Search by type:");
+        System.out.println("1. Type");
+        System.out.println("2. Date");
+        System.out.println("3. place");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (choice) {
+            case 1:
+                findEventsByType();
+                break;
+            case 2:
+                findEventsByDate();
+                break;
+            case 3:
+                findEventsByLocation();
+            default:
+                break;
+        }
+    }
+
+    private void findEventsByDate() {
+        System.out.println("Enter event date (dd/mm/yyyy)");
+        String dateString = scanner.nextLine();
+        try {
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateString);
+            List<Event> events = EventService.findEventsByDate(date);
+            for (Event event : events) {
+                System.out.println(event);
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid date format");
+        }
+
+    }
+
+    private void findEventsByLocation() {
+        System.out.println("Eneter event location");
+        String location = scanner.nextLine();
+        List<Event> events = eventService.FindEventByLocation(location);
+        for (Event event : events) {
+            System.out.println(event);
         }
     }
 
@@ -257,6 +307,16 @@ public class Menu {
         }
     }
 
+    private void findEventsByType() {
+        System.out.println("Enter event type:");
+        String type = scanner.nextLine();
+
+        List<Event> events = eventService.FindEventByType(type);
+        for (Event event : events) {
+            System.out.println(event);
+        }
+    }
+
     private void updateEvent() {
         viewAllEvents();
         System.out.println("Enter event index to update:");
@@ -336,5 +396,4 @@ public class Menu {
             System.out.println((i + 1) + ". " + participants.get(i));
         }
     }
-
 }    
