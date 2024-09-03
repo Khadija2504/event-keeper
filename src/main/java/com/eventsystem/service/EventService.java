@@ -61,12 +61,12 @@ public class EventService {
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
         
-        calendar.add(Calendar.DAY_OF_YEAR, -7);
+        calendar.add(Calendar.DAY_OF_YEAR, 7);
         Date startDate = calendar.getTime();
         
         for (Event event : events) {
             Date eventDate = event.getDate();
-            if (eventDate.after(startDate) && eventDate.before(currentDate)) {
+            if (eventDate.before(startDate) && eventDate.after(currentDate)) {
                 nextWeekEvents.add(event);
             }
         }
