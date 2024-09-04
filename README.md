@@ -55,3 +55,26 @@ EventManagementSystem/
 │   │   │   │   │   ├── util/
 │   │   │   │   │   │   ├── InputValidator.java
 │   │   │   │   │   │   ├── ExceptionHandler.java
+```
+## Démarrer l'Application
+### Cloner le Répertoire :
+
+```sh
+git clone https://github.com/yourusername/EventManagementSystem.git
+```
+### Naviguer dans le Répertoire du Projet :
+```sh
+cd EventManagementSystem
+```
+### Compiler le Projet :
+```sh
+javac -d out -sourcepath src src/com/eventsystem/Main.java
+```
+### Exécuter l'Application :
+```sh
+java -cp out com.eventsystem.Main
+```
+
+
+
+
