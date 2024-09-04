@@ -34,12 +34,12 @@ The **Event Management System** is a console-based Java application designed to 
 
 The project follows a typical Java project structure:
 
-├── src/.
-│   ├── main/.
-│   │   ├── java/.
--│   │   │   ├── com/
--│   │   │   │   ├── eventsystem/
--│   │   │   │   │   ├── Main.java
+##├── src/
+##│   ├── main/
+##│   │   ├── java/
+##│   │   │   ├── com/
+##│   │   │   │   ├── eventsystem/
+##│   │   │   │   │   ├── Main.java
 │   │   │   │   │   ├── model/
 │   │   │   │   │   │   ├── Event.java
 │   │   │   │   │   │   ├── Participant.java
