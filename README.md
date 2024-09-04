@@ -1,42 +1,44 @@
-# Event Management System
+# Système de Gestion d'Événements
 
-## Overview
+## Vue d'ensemble
 
-The **Event Management System** is a console-based Java application designed to manage events such as conferences, seminars, meetings, and workshops. The system allows administrators to manage events and participants, while regular users (participants) can view and register for events. The application features a role-based system that allows seamless switching between administrator and participant roles without needing to restart the application.
+Le **Système de Gestion d'Événements** est une application Java basée sur la console qui aide à gérer des événements tels que des conférences, des séminaires, des réunions et des ateliers. Le système est conçu pour les administrateurs, qui gèrent les événements et les participants, ainsi que pour les utilisateurs réguliers (participants), qui peuvent consulter et s'inscrire à des événements. L'application permet de basculer facilement entre les rôles d'administrateur et de participant sans avoir à redémarrer l'application.
 
-## Features
+## Fonctionnalités
 
-### Administrator
+### Fonctionnalités Administrateur
 
-- **Add Event**: Create new events with details such as name, location, date, and type.
-- **Update Event**: Modify details of existing events.
-- **Delete Event**: Remove events from the system.
-- **View All Events**: List all events in the system.
-- **Manage Participants**:
-  - Add Participant: Register new participants.
-  - Update Participant: Modify participant details.
-  - Delete Participant: Remove participants from the system.
-  - View All Participants: List all registered participants.
+- **Ajouter un événement** : Créer de nouveaux événements en spécifiant des détails tels que le nom, le lieu, la date et le type.
+- **Modifier un événement** : Modifier les détails des événements existants.
+- **Supprimer un événement** : Supprimer des événements du système.
+- **Afficher tous les événements** : Lister tous les événements actuellement dans le système.
+- **Gérer les participants** :
+  - Ajouter un participant : Inscrire de nouveaux participants.
+  - Modifier un participant : Modifier les détails des participants.
+  - Supprimer un participant : Supprimer des participants du système.
+  - Afficher tous les participants : Lister tous les participants inscrits.
 
-### Participant
+### Fonctionnalités Utilisateur
 
-- **View Events**: List all available events.
-- **Register for Event**: Sign up for an event by providing participant details.
-- **Unregister from Event**: Withdraw from an event.
-- **View My Registrations**: See all events the participant is registered for.
-- **Edit My Details**: Update participant name and email.
+- **Afficher les événements** : Consulter tous les événements disponibles.
+- **S'inscrire à un événement** : S'inscrire à un événement en utilisant les détails du participant.
+- **Se désinscrire d'un événement** : Se désinscrire d'un événement.
+- **Afficher mes inscriptions** : Voir tous les événements auxquels le participant est actuellement inscrit.
+- **Modifier mes détails** : Mettre à jour les informations du participant comme le nom et l'adresse e-mail.
 
-### General
+### Fonctionnalités Générales
 
-- **Role Switching**: Seamlessly switch between administrator and participant roles without exiting the application.
+- **Changement de rôle** : Basculez facilement entre les rôles d'administrateur et de participant sans quitter l'application.
 
-## Project Structure
+## Structure du Projet
 
-The project follows a typical Java project structure:
+Le projet suit une structure Java typique :
 
-- ├── src/
-- ** │   ├── main/
-- │   │   ├── java/
+```text
+EventManagementSystem/
+├── src/
+│   ├── main/
+│   │   ├── java/
 │   │   │   ├── com/
 │   │   │   │   ├── eventsystem/
 │   │   │   │   │   ├── Main.java
@@ -53,4 +55,3 @@ The project follows a typical Java project structure:
 │   │   │   │   │   ├── util/
 │   │   │   │   │   │   ├── InputValidator.java
 │   │   │   │   │   │   ├── ExceptionHandler.java
-
